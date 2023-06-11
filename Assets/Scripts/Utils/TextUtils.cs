@@ -49,6 +49,10 @@ namespace Utils
         {
             var fromJson = converter.FromJson<List<T>>(jsonData);
             var result = new Dictionary<string, T>();
+
+            if(string.IsNullOrEmpty(jsonData))
+                return result;
+
             foreach (var unit in fromJson)
             {
                 result.Add(unit.Id, unit);

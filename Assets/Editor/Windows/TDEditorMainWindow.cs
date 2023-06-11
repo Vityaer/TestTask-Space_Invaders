@@ -1,6 +1,10 @@
 using Common;
 using Db.CommonDictionaries;
 using Editor.Common;
+using Editor.Pages.Enemies;
+using Editor.Pages.Levels;
+using Editor.Pages.Players;
+using Editor.Pages.Weapons;
 using Json.Impl;
 using Sirenix.OdinInspector.Editor;
 using System.Collections.Generic;
@@ -15,8 +19,12 @@ namespace Editor.Windows
         private CommonDictionaries _dictionaries;
         private ConfigVersion ConfigVersion;
 
+        private EnemyPageEditor _enemyPageEditor;
+        private WeaponPageEditor _weaponPageEditor;
+        private LevelPageEditor _levelPageEditor;
+        private PlayerShipPageEditor _playerShipPageEditor;
         private List<BasePageEditor> _allPages;
-
+        
         private OdinMenuTree _tree;
 
         [MenuItem("TD_Editor/Main _%#T")]
@@ -55,11 +63,13 @@ namespace Editor.Windows
         private void FillTree()
         {
             _tree.Selection.SupportsMultiSelect = false;
-            //_tree.Add("City/Mines", _minePageEditor);
-
+            _tree.Add("Enemies/Enemies editor", _enemyPageEditor);
+            _tree.Add("Levels/Levels editor", _levelPageEditor);
+            _tree.Add("Player/Weapons editor", _weaponPageEditor);
+            _tree.Add("Player/Ships editor", _playerShipPageEditor);
         }
 
-        private async void InitPages()
+        private void InitPages()
         {
             ConfigVersion = EditorUtils.Load<ConfigVersion>();
             if (ConfigVersion == null)
@@ -75,8 +85,17 @@ namespace Editor.Windows
 
             _allPages = new List<BasePageEditor>();
 
-            //_heroPageEditor = new HeroPageEditor(_dictionaries);
-            //_allPages.Add(_heroPageEditor);
+            _enemyPageEditor = new EnemyPageEditor(_dictionaries);
+            _allPages.Add(_enemyPageEditor);
+
+            _levelPageEditor = new LevelPageEditor(_dictionaries);
+            _allPages.Add(_levelPageEditor);
+
+            _weaponPageEditor = new WeaponPageEditor(_dictionaries);
+            _allPages.Add(_weaponPageEditor);
+
+            _playerShipPageEditor = new PlayerShipPageEditor(_dictionaries);
+            _allPages.Add(_playerShipPageEditor);
         }
 
         private void OnValueSaved()
@@ -86,7 +105,7 @@ namespace Editor.Windows
 
         protected override void OnDestroy()
         {
-            _allPages.Clear();
+            _allPages?.Clear();
             _allPages = null;
             base.OnDestroy();
         }
