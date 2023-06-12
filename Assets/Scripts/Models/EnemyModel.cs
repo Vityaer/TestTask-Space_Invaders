@@ -1,11 +1,8 @@
 ﻿namespace Models
 {
-    public class EnemyModel : BaseModel
+    public class EnemyModel : BaseGameModel
     {
-        public int Health;
-        public int DamageAmount;
-        public float Cooldown;
         public int Bounty;
-        public string ResourcePath;
+        public string BulletResourcePath;
     }
 }

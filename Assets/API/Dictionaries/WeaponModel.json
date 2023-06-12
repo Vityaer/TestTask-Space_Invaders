@@ -1,8 +1,20 @@
 [
   {
-    "Cooldown": 0.0,
-    "DamageAmount": 0,
-    "ResourcePath": "",
-    "Id": "77310"
+    "BulletId": "BlueBullet",
+    "PrefabPath": "Assets/Resources/Weapons/SimpleGun.prefab",
+    "ViewResourcePath": "Assets/Resources/Images/Bullets/blueBullet.png",
+    "Id": "SimpleGun"
+  },
+  {
+    "BulletId": "GreenBullet",
+    "PrefabPath": "Assets/Resources/Weapons/DoubleGun.prefab",
+    "ViewResourcePath": "Assets/Resources/Images/Bullets/greenBullet.png",
+    "Id": "DoubleGun"
+  },
+  {
+    "BulletId": "RedBullet",
+    "PrefabPath": "Assets/Resources/Weapons/ShotGun.prefab",
+    "ViewResourcePath": "Assets/Resources/Images/Bullets/redBullet.png",
+    "Id": "ShotGun"
   }
 ]

@@ -10,6 +10,7 @@ namespace Db.CommonDictionaries
         public Dictionary<string, EnemyModel> Enemies = new Dictionary<string, EnemyModel>();
         public Dictionary<string, LevelModel> Levels = new Dictionary<string, LevelModel>();
         public Dictionary<string, WeaponModel> Weapons = new Dictionary<string, WeaponModel>();
+        public Dictionary<string, BulletModel> Bullets = new Dictionary<string, BulletModel>();
         public Dictionary<string, PlayerShipModel> PlayerShips = new Dictionary<string, PlayerShipModel>();
 
         private readonly IJsonConverter _converter;
@@ -34,6 +35,7 @@ namespace Db.CommonDictionaries
             Levels = GetModels<LevelModel>();
             Weapons = GetModels<WeaponModel>();
             PlayerShips = GetModels<PlayerShipModel>();
+            Bullets = GetModels<BulletModel>();
         }
 
         private Dictionary<string, T> GetModels<T>() where T : BaseModel

@@ -3,10 +3,14 @@
     "Waves": [
       {
         "Id": "Unit1",
-        "Count": 6
+        "Count": 8
       },
       {
         "Id": "Unit2",
+        "Count": 8
+      },
+      {
+        "Id": "Unit3",
         "Count": 8
       }
     ],

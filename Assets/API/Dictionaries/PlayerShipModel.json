@@ -1,8 +1,8 @@
 [
   {
-    "Health": 0,
-    "Speed": 0.0,
-    "ResourcePath": "",
-    "Id": "8896"
+    "Speed": 4.0,
+    "DefaultWeaponId": "SimpleGun",
+    "ViewResourcePath": "Assets/Resources/Images/player.png",
+    "Id": "StandardShip"
   }
 ]

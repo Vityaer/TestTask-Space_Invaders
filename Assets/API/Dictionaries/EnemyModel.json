@@ -1,18 +1,20 @@
 [
   {
-    "Health": 50,
-    "DamageAmount": 44,
-    "Cooldown": 5.0,
-    "Bounty": 6,
-    "ResourcePath": "Assets/Resources/Enemies/Enemy1.prefab",
+    "Bounty": 25,
+    "BulletResourcePath": "",
+    "ViewResourcePath": "Assets/Resources/Images/enemy1.png",
     "Id": "Unit1"
   },
   {
-    "Health": 59,
-    "DamageAmount": 34,
-    "Cooldown": 2.0,
-    "Bounty": 1,
-    "ResourcePath": "Assets/Resources/Enemies/Enemy1.prefab",
+    "Bounty": 40,
+    "BulletResourcePath": "",
+    "ViewResourcePath": "Assets/Resources/Images/enemy2.png",
     "Id": "Unit2"
+  },
+  {
+    "Bounty": 50,
+    "BulletResourcePath": "",
+    "ViewResourcePath": "Assets/Resources/Images/enemy3.png",
+    "Id": "Unit3"
   }
 ]

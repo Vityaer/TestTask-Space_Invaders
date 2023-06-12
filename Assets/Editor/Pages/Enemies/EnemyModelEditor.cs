@@ -9,7 +9,8 @@ namespace Editor.Pages.Enemies
     [HideReferenceObjectPicker]
     public class EnemyModelEditor : BaseModelEditor<EnemyModel>
     {
-        private Object _resourcePath;
+        private Object _viewResourcePath;
+        private Object _bulletResourcePath;
 
         public EnemyModelEditor(EnemyModel model)
         {
@@ -26,33 +27,6 @@ namespace Editor.Pages.Enemies
         }
 
         [ShowInInspector]
-        [LabelText("Health")]
-        [LabelWidth(150)]
-        public int Health
-        {
-            get => _model.Health;
-            set => _model.Health = value;
-        }
-
-        [ShowInInspector]
-        [LabelText("Damage")]
-        [LabelWidth(150)]
-        public int DamageAmount
-        {
-            get => _model.DamageAmount;
-            set => _model.DamageAmount = value;
-        }
-
-        [ShowInInspector]
-        [LabelText("Cooldown")]
-        [LabelWidth(150)]
-        public float Cooldown
-        {
-            get => _model.Cooldown;
-            set => _model.Cooldown = value;
-        }
-
-        [ShowInInspector]
         [LabelText("Bounty")]
         [LabelWidth(150)]
         public int Bounty
@@ -62,25 +36,48 @@ namespace Editor.Pages.Enemies
         }
 
         [ShowInInspector]
-        [LabelText("Resource Path")]
+        [LabelText("View Resource Path")]
         [PreviewField(60)]
         [LabelWidth(150)]
-        public Object ResourcePath
+        public Object ViewResourcePath
         {
             get
             {
-                if (_resourcePath == null)
+                if (_viewResourcePath == null)
                 {
-                    _resourcePath = AssetDatabase.LoadAssetAtPath<GameObject>(_model.ResourcePath);
+                    _viewResourcePath = AssetDatabase.LoadAssetAtPath<Sprite>(_model.ViewResourcePath);
                 }
 
-                return _resourcePath;
+                return _viewResourcePath;
             }
             set
             {
-                _resourcePath = value;
-                var path = AssetDatabase.GetAssetPath(_resourcePath);
-                _model.ResourcePath = path;
+                _viewResourcePath = value;
+                var path = AssetDatabase.GetAssetPath(_viewResourcePath);
+                _model.ViewResourcePath = path;
+            }
+        }
+
+        [ShowInInspector]
+        [LabelText("Bullet Resource Path")]
+        [PreviewField(60)]
+        [LabelWidth(150)]
+        public Object BulletResourcePath
+        {
+            get
+            {
+                if (_bulletResourcePath == null)
+                {
+                    _bulletResourcePath = AssetDatabase.LoadAssetAtPath<Sprite>(_model.BulletResourcePath);
+                }
+
+                return _bulletResourcePath;
+            }
+            set
+            {
+                _bulletResourcePath = value;
+                var path = AssetDatabase.GetAssetPath(_bulletResourcePath);
+                _model.BulletResourcePath = path;
             }
         }
     }
