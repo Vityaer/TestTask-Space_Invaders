@@ -1,9 +1,8 @@
 ﻿namespace Models
 {
-    public class PlayerShipModel : BaseModel
+    public class PlayerShipModel : BaseGameModel
     {
-        public int Health;
         public float Speed;
-        public string ResourcePath;
+        public string DefaultWeaponId;
     }
 }

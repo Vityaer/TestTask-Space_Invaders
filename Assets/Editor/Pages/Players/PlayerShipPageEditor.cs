@@ -32,8 +32,9 @@ namespace Editor.Pages.Players
             var playerShips = PlayerShips.Select(shipEditor => new PlayerShipModel
             {
                 Id = shipEditor.Id,
-                Health = shipEditor.Health,
-                ResourcePath = AssetDatabase.GetAssetPath(shipEditor.ResourcePath)
+                Speed = shipEditor.Speed,
+                DefaultWeaponId = shipEditor.DefaultBulletId,
+                ViewResourcePath = AssetDatabase.GetAssetPath(shipEditor.ViewResourcePath)
             }).ToList();
 
             EditorUtils.Save(playerShips);

@@ -1,9 +1,8 @@
 ﻿namespace Models
 {
-    public class WeaponModel : BaseModel
+    public class WeaponModel : BaseGameModel
     {
-        public float Cooldown;
-        public int DamageAmount;
-        public string ResourcePath;
+        public string BulletId;
+        public string PrefabPath;
     }
 }

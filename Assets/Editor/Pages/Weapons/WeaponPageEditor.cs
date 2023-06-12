@@ -32,9 +32,9 @@ namespace Editor.Pages.Weapons
             var weapons = Weapons.Select(weapon => new WeaponModel
             {
                 Id = weapon.Id,
-                Cooldown = weapon.Cooldown,
-                DamageAmount = weapon.DamageAmount,
-                ResourcePath = AssetDatabase.GetAssetPath(weapon.ResourcePath)
+                BulletId = weapon.BulletId,
+                PrefabPath = AssetDatabase.GetAssetPath(weapon.PrefabResourcePath),
+                ViewResourcePath = AssetDatabase.GetAssetPath(weapon.ViewResourcePath)
             }).ToList();
 
             EditorUtils.Save(weapons);

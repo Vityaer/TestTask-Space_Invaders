@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using Utils;
-using static Constants;
 
 namespace Editor.Pages.Enemies
 {
@@ -33,11 +32,9 @@ namespace Editor.Pages.Enemies
             var enemies = Enemies.Select(enemy => new EnemyModel
             {
                 Id = enemy.Id,
-                Health = enemy.Health,
-                Cooldown = enemy.Cooldown,
-                DamageAmount = enemy.DamageAmount,
                 Bounty = enemy.Bounty,
-                ResourcePath = AssetDatabase.GetAssetPath(enemy.ResourcePath)
+                ViewResourcePath = AssetDatabase.GetAssetPath(enemy.ViewResourcePath),
+                BulletResourcePath = AssetDatabase.GetAssetPath(enemy.BulletResourcePath)
             }).ToList();
 
             EditorUtils.Save(enemies);

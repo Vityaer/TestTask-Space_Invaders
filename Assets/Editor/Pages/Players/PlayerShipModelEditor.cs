@@ -9,7 +9,7 @@ namespace Editor.Pages.Players
     [HideReferenceObjectPicker]
     public class PlayerShipModelEditor : BaseModelEditor<PlayerShipModel>
     {
-        private Object _resourcePath;
+        private Object _viewResourcePath;
 
         public PlayerShipModelEditor(PlayerShipModel model)
         {
@@ -26,15 +26,6 @@ namespace Editor.Pages.Players
         }
 
         [ShowInInspector]
-        [LabelText("Health")]
-        [LabelWidth(150)]
-        public int Health
-        {
-            get => _model.Health;
-            set => _model.Health = value;
-        }
-
-        [ShowInInspector]
         [LabelText("Speed")]
         [LabelWidth(150)]
         public float Speed
@@ -44,25 +35,34 @@ namespace Editor.Pages.Players
         }
 
         [ShowInInspector]
-        [LabelText("Resource Path")]
+        [LabelText("Default Weapon Id")]
+        [LabelWidth(150)]
+        public string DefaultBulletId
+        {
+            get => _model.DefaultWeaponId;
+            set => _model.DefaultWeaponId = value;
+        }
+
+        [ShowInInspector]
+        [LabelText("View Resource Path")]
         [PreviewField(60)]
         [LabelWidth(150)]
-        public Object ResourcePath
+        public Object ViewResourcePath
         {
             get
             {
-                if (_resourcePath == null)
+                if (_viewResourcePath == null)
                 {
-                    _resourcePath = AssetDatabase.LoadAssetAtPath<GameObject>(_model.ResourcePath);
+                    _viewResourcePath = AssetDatabase.LoadAssetAtPath<Sprite>(_model.ViewResourcePath);
                 }
 
-                return _resourcePath;
+                return _viewResourcePath;
             }
             set
             {
-                _resourcePath = value;
-                var path = AssetDatabase.GetAssetPath(_resourcePath);
-                _model.ResourcePath = path;
+                _viewResourcePath = value;
+                var path = AssetDatabase.GetAssetPath(_viewResourcePath);
+                _model.ViewResourcePath = path;
             }
         }
     }

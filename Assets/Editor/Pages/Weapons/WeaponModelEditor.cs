@@ -9,7 +9,8 @@ namespace Editor.Pages.Weapons
     [HideReferenceObjectPicker]
     public class WeaponModelEditor : BaseModelEditor<WeaponModel>
     {
-        private Object _resourcePath;
+        private Object _viewResourcePath;
+        private Object _prefabResourcePath;
 
         public WeaponModelEditor(WeaponModel model)
         {
@@ -26,44 +27,57 @@ namespace Editor.Pages.Weapons
         }
 
         [ShowInInspector]
-        [LabelText("Damage")]
+        [LabelText("BulletId")]
         [LabelWidth(150)]
-        public int DamageAmount
+        public string BulletId
         {
-            get => _model.DamageAmount;
-            set => _model.DamageAmount = value;
+            get => _model.BulletId;
+            set => _model.BulletId = value;
         }
 
         [ShowInInspector]
-        [LabelText("Cooldown")]
-        [LabelWidth(150)]
-        public float Cooldown
-        {
-            get => _model.Cooldown;
-            set => _model.Cooldown = value;
-        }
-
-
-        [ShowInInspector]
-        [LabelText("Resource Path")]
+        [LabelText("Prefab Resource Path")]
         [PreviewField(60)]
         [LabelWidth(150)]
-        public Object ResourcePath
+        public Object PrefabResourcePath
         {
             get
             {
-                if (_resourcePath == null)
+                if (_prefabResourcePath == null)
                 {
-                    _resourcePath = AssetDatabase.LoadAssetAtPath<GameObject>(_model.ResourcePath);
+                    _prefabResourcePath = AssetDatabase.LoadAssetAtPath<GameObject>(_model.PrefabPath);
                 }
 
-                return _resourcePath;
+                return _prefabResourcePath;
             }
             set
             {
-                _resourcePath = value;
-                var path = AssetDatabase.GetAssetPath(_resourcePath);
-                _model.ResourcePath = path;
+                _prefabResourcePath = value;
+                var path = AssetDatabase.GetAssetPath(_prefabResourcePath);
+                _model.PrefabPath = path;
+            }
+        }
+
+        [ShowInInspector]
+        [LabelText("View Resource Path")]
+        [PreviewField(60)]
+        [LabelWidth(150)]
+        public Object ViewResourcePath
+        {
+            get
+            {
+                if (_viewResourcePath == null)
+                {
+                    _viewResourcePath = AssetDatabase.LoadAssetAtPath<Sprite>(_model.ViewResourcePath);
+                }
+
+                return _viewResourcePath;
+            }
+            set
+            {
+                _viewResourcePath = value;
+                var path = AssetDatabase.GetAssetPath(_viewResourcePath);
+                _model.ViewResourcePath = path;
             }
         }
     }
